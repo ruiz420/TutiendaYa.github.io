@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="Ventas.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="topbar-left">Tu Tienda <span class="resaltar">YA</span></div>
+        <div class="superbar-search">
+            <input type="text" id="buscarProducto" placeholder="Buscar producto...">
+        </div>
+        <div class="btn-inicio-wrapper">
+            <a href="Inicio.html" class="btn-inicio">Inicio</a>
+        </div>
+    </header>
+
+    <aside class="dashboard-menu">
+        <h3>📋 Modo de Venta</h3>
+        <ul>
+            <li><button onclick="mostrarVista('venta-normal')">🛒 Venta Normal</button></li>
+            <li><button onclick="mostrarVista('venta-rapida')">⚡ Venta Rápida</button></li>
+            <li><button onclick="mostrarVista('historial-ventas')">📜 Historial de Ventas</button></li>
+            <li><button onclick="mostrarVista('cierre-caja')">💵 Cierre de Caja</button></li>
+            <li><button onclick="window.location.href='informeVentas.html'">📊 Ver Informes</button></li>
+        </ul>
+    </aside>
+
+    <main class="ventas-contenido">
+
+                <!-- VENTA NORMAL -->
+
+
+        <section id="venta-normal" class="app-view active">
+            <h2>🛒 Venta Normal</h2>
+            
+            <div id="lista-productos" class="productos-grid"></div>
+            
+            <p id="sinProductosMsg" class="mensaje-vacio">No se encontraron productos.</p>
+
+                            <!-- Carrito -->
+
+
+            <div id="carrito" class="carrito-box">
+                <h3>🛍️ Carrito</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaCarrito"></tbody>
+                </table>
+
+                <p id="totalCarrito" class="total">Total: $0</p>
+                
+                <button id="finalizarVenta" class="btn-finalizar">Finalizar Venta</button>
+            </div>
+        </section>
+
+                        <!-- VENTA RÁPIDA -->
+
+
+        <section id="venta-rapida" class="app-view">
+            <h2>⚡ Venta Rápida</h2>
+
+            <div class="form-container">
+                <label for="productoVenta">Producto:</label>
+                <input type="text" id="productoVenta" placeholder="Ej: Leche">
+
+                <label for="precioVenta">Precio ($):</label>
+                <input type="number" id="precioVenta" placeholder="Ej: 3000">
+
+                <label for="productoCantidad">Cantidad:</label>
+                <input type="number" id="productoCantidad" placeholder="Ej: 5">
+
+                <button id="btnRegistrarRapida">➕ Registrar Venta</button>
+            </div>
+
+            <h3>Historial de Ventas Rápidas</h3>
+            
+            <table class="tabla-simple">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Fecha</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaVentas"></tbody>
+            </table>
+
+            <p id="totalCajaRapida" class="total">Total en Caja: $0</p>
+        </section>
+
+        <!-- HISTORIAL DE VENTAS -->
+        <section id="historial-ventas" class="app-view">
+            <h2>📜 Historial de Ventas</h2>
+
+            <table class="tabla-simple">
+                <thead>
+                    <tr>
+                        <th>Día</th>
+                        <th>Venta #</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaHistorial"></tbody>
+            </table>
+        </section>
+
+        <!-- CIERRE DE CAJA -->
+        <section id="cierre-caja" class="app-view">
+            <h2>💵 Cierre de Caja Diario</h2>
+
+            <div class="cierre-container">
+                
+                <div class="cierre-seccion">
+                    <h3>1. Datos del Sistema</h3>
+
+                    <div class="campo">
+                        <label for="fondoInicial">Fondo Inicial ($):</label>
+                        <input type="number" id="fondoInicial" value="50000">
+                    </div>
+
+                    <div class="info-linea">
+                        <span>Ventas en Efectivo:</span>
+                        <span id="ventasEfectivoEsperadas" class="valor">$0</span>
+                    </div>
+
+                    <div class="info-linea destacado">
+                        <span>Efectivo Esperado en Caja:</span>
+                        <span id="efectivoTotalEsperado">$0</span>
+                    </div>
+                </div>
+
+                <div class="cierre-seccion">
+                    <h3>2. Conteo Físico</h3>
+
+                    <label for="efectivoContado">Efectivo Contado:</label>
+                    <input type="number" id="efectivoContado" placeholder="Contar efectivo en caja">
+                </div>
+
+            </div>
+            <div class="cierre-resultado">
+                <h3>3. Resultado Final</h3>
+
+                <div class="resultado-info">
+                    <div>
+                        <span>Diferencia de Caja:</span>
+                        <p id="diferenciaCaja" class="diferencia">$0</p>
+                    </div>
+
+                    <button id="cerrarCajaBtn" class="btn-cerrar">🔒 Finalizar y Cerrar Caja</button>
+                </div>
+
+                <p id="mensajeCierre" class="mensaje-cierre"></p>
+            </div>
+        </section>
+
+    </main>
+
+
+
+
+    <script>
+        function mostrarVista(id) {
+            document.querySelectorAll(".app-view").forEach(v => {
+                v.style.display = "none";
+            });
+            document.getElementById(id).style.display = "block";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            mostrarVista("venta-normal");
+            cargarProductosPrueba();
+            mostrarProductosDisponibles();
+        });
+
+        function cargarProductosPrueba() {
+            if (!localStorage.getItem('productosInventario')) {
+                const productosPrueba = [
+                    { nombre: "Coca Cola 400ml", categoria: "Bebidas", precioCompra: 1500, precioVenta: 2500, cantidad: 50 },
+                    { nombre: "Pan Tajado", categoria: "Panadería", precioCompra: 3000, precioVenta: 4500, cantidad: 30 },
+                    { nombre: "Leche Entera 1L", categoria: "Lácteos", precioCompra: 2800, precioVenta: 4000, cantidad: 25 },
+                    { nombre: "Arroz Diana 500g", categoria: "Granos", precioCompra: 1800, precioVenta: 2800, cantidad: 40 },
+                    { nombre: "Aceite Girasol 1L", categoria: "Aceites", precioCompra: 5000, precioVenta: 7500, cantidad: 20 },
+                    { nombre: "Chocolate Corona", categoria: "Snacks", precioCompra: 800, precioVenta: 1500, cantidad: 100 }
+                ];
+                localStorage.setItem('productosInventario', JSON.stringify(productosPrueba));
+            }
+        }
+
+        function mostrarProductosDisponibles() {
+            const contenedor = document.getElementById("lista-productos");
+            const productos = JSON.parse(localStorage.getItem('productosInventario') || '[]');
+            
+            if (!contenedor) return;
+
+            contenedor.innerHTML = "";
+
+            productos.forEach(p => {
+                const card = document.createElement("div");
+                card.className = "producto-card";
+                card.innerHTML = `
+                    <h4>${p.nombre}</h4>
+                    <p>Precio: $${p.precioVenta.toLocaleString()}</p>
+                `;
+                card.onclick = () => agregarAlCarrito(p.nombre, p.precioVenta);
+                contenedor.appendChild(card);
+            });
+        }
+    </script>
+
+    <script src="ventas.js"></script>
+
+</body>
+</html>

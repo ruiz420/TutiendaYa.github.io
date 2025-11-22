@@ -1,0 +1,119 @@
+  <!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | TU tienda ya</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="inicio.css">
+    <link rel="stylesheet" href="ModeDark.css">
+  </head>
+  <body>
+    
+    <header>
+      <h1 class="titulo">
+        Tu Tienda<span class="resaltar">YA</span>
+      </h1>
+
+      <nav>
+        <ul class="menu"> 
+          <button id="btnTema" class="tema-btn">🌙</button>
+
+          <li><a href="Inicio.html">Inicio</a></li>
+          
+
+          <li class="submenu">
+            <a href="#" class="submenu-toggle">Productos ▾</a>
+            <ul class="submenu-items">
+              <li><a href="#">Aseo</a></li>
+              <li><a href="#">Granos</a></li>
+              <li><a href="#">Lácteos</a></li>
+              <li><a href="#">Bebidas</a></li>
+              <li><a href="#">Snacks</a></li>
+              <li><a href="#">Verduras</a></li>
+              <li><a href="#">Frutas</a></li>
+              <li><a href="#">Carnes</a></li>
+            </ul>
+          </li>
+
+          <li class="perfil-menu" id="perfilMenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="white" viewBox="0 0 24 24" class="icono-usuario">
+              <path d="M12 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 12c4.418 0 8 2.239 8 5v3H4v-3c0-2.761 3.582-5 8-5z"/>
+            </svg>
+
+            <ul class="submenu-items">
+              <li><a href="verPerfil.html">Configuración</a></li>
+              <li><a href="Index.html">Cerrar sesión</a></li>
+            </ul>
+          </li>          
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <p>¡Bienvenido, <span id="usuario"></span>!</p>
+      <p>Encuentra los mejores productos al mejor precio. Tu compra fácil, rápida y segura.</p>
+      <h1>Explorar productos</h1>
+      
+    </section>
+
+  <!-- OPCIONES RÁPIDAS -->
+  <section class="opciones-rapidas">
+
+    <a href="ventas.html" class="card">
+      <div>
+        <img src="cajero.jpg" alt="Ventas">
+        <h3>Ventas</h3>
+        <p>Registra facturas y gestiona tus ventas fácilmente.</p>
+        <button class="btn">Ir a Ventas</button>
+      </div>
+    </a>
+
+    <a href="inventario.html" class="card">
+      <div>
+        <img src="Inventario.jpg" alt="Inventario">
+        <h3>Inventario</h3>
+        <p>Crea, modifica productos y controla el stock.</p>
+        <button class="btn">Ir a Inventario</button>
+      </div>
+    </a>
+
+    <a href="informeVentas.html" class="card">
+      <div>
+        <img src="Informe de ventas.jpg" alt="Informe de ventas">
+        <h3>Informe de Ventas</h3>
+        <p>Consulta estadísticas y reportes de tus ventas.</p>
+        <button class="btn">Ver Informes</button>
+      </div>
+    </a>
+  </section>
+
+
+
+    <footer>
+      <p>© 2025 TU tienda ya — Todos los derechos reservados</p>
+    </footer>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"));
+
+
+
+        // Mostrar nombre del usuario
+        document.getElementById("usuario").textContent = usuarioActual.nombre || "Usuario";
+
+        // Mostrar foto del usuario
+        const fotoUsuario = document.getElementById("fotoUsuarioInicio");
+        if (usuarioActual.foto) {
+          fotoUsuario.src = usuarioActual.foto;
+        }
+      });
+    </script>
+    
+    <script src="ModeDark.js"></script>
+        <script src="inicio.js"></script>
+    
+  </body>
+  </html>

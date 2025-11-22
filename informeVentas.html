@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informes</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="informeVentas.css">
+</head>
+<body>
+
+    <header>
+      <h1 class="titulo">
+        Tu Tienda<span class="resaltar">YA</span>
+      </h1>        <nav>
+            <a href="Inicio.html" class="activo">Inicio</a>
+            <a href="informeVentas.html" class="activo">Informe</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="titulo">
+            <h1>Informes de Ventas</h1>
+            <p>Análisis y reportes del negocio</p>
+        </div>
+
+        <section class="estadisticas">
+            <h2>Resumen General</h2>
+            <div class="tarjetas">
+                <div class="tarjeta"><div class="icono azul">V</div><p>Total Ventas</p><h3 id="totalVentas">0</h3></div>
+                <div class="tarjeta"><div class="icono verde">$</div><p>Total Ingresos</p><h3 id="totalIngresos">$0</h3></div>
+                <div class="tarjeta"><div class="icono morado">P</div><p>Promedio Diario</p><h3 id="promedioDiario">$0</h3></div>
+                <div class="tarjeta"><div class="icono naranja">C</div><p>Cierres de Caja</p><h3 id="cantidadCierres">0</h3></div>
+            </div>
+        </section>
+
+        <section class="filtros">
+            <h2>Filtrar por Fecha</h2>
+            <div class="controles-filtro">
+                <div class="campo">
+                    <label>Periodo:</label>
+                    <select id="tipoFiltro" onchange="cambiarFiltro()">
+                        <option value="todos">Todos</option>
+                        <option value="dia">Por día</option>
+                        <option value="mes">Por mes</option>
+                        <option value="anio">Por año</option>
+                        <option value="rango">Rango de fechas</option>
+                    </select>
+                </div>
+
+                <div id="filtrosDia" class="campo" style="display: none;">
+                    <label>Día:</label><input type="date" id="fechaDia">
+                </div>
+                <div id="filtrosMes" class="campo" style="display: none;">
+                    <label>Mes:</label>
+                    <select id="mes">
+                        <option value="01">Enero</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+                    <label>Año:</label><input type="number" id="anioMes" value="2025">
+                </div>
+                <div id="filtrosAnio" class="campo" style="display: none;">
+                    <label>Año:</label><input type="number" id="anio" value="2025">
+                </div>
+                <div id="filtrosRango" class="campo" style="display: none;">
+                    <label>Desde:</label><input type="date" id="fechaInicio">
+                    <label>Hasta:</label><input type="date" id="fechaFin">
+                </div>
+
+                <div class="botones">
+                    <button onclick="aplicarFiltro()">Aplicar</button>
+                    <button onclick="limpiarFiltro()" class="secundario">Limpiar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="grafico-seccion">
+            <h2>Evolución de Ventas</h2>
+            <div class="grafico-contenedor">
+                <div id="grafico" class="grafico"></div>
+            </div>
+        </section>
+        
+        <section class="tabla-seccion">
+            <h2>Historial de Cierres</h2>
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Fondo Inicial</th>
+                            <th>Total Ventas</th>
+                            <th>Cant. Ventas</th>
+                            <th>Efectivo Contado</th>
+                            <th>Diferencia</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaInformes">
+                        <tr><td colspan="8">No hay informes</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="informeVentas.js"></script>
+</body>
+</html>

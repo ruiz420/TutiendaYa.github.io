@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+}
+
+header {
+    background: linear-gradient(to right, #5c6bc0, #512da8);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+header nav a.activo {
+    color: #ff4081;
+}
+
+main {
+    padding: 20px;
+}
+
+.titulo h1, .estadisticas h2, .filtros h2, .grafico-seccion h2, .tabla-seccion h2 {
+    color: #000000;
+    font-size: 30px;
+}
+
+
+
+.tarjetas {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.tarjeta {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    width: 23%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.tarjeta .icono {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.tarjeta .azul { background: #5c6bc0; }
+.tarjeta .verde { background: #4caf50; }
+.tarjeta .morado { background: #9c27b0; }
+.tarjeta .naranja { background: #ff7043; }
+
+
+.controles-filtro {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtros .campo {
+    margin-bottom: 15px;
+}
+
+.filtros select, .filtros input {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.botones button {
+    padding: 10px 15px;
+    background: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.botones button:hover {
+    background: #ff4081;
+}
+
+
+
+
+.grafico-contenedor {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.tabla-contenedor table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-contenedor th, .tabla-contenedor td {
+    padding: 12px;
+    text-align: left;
+}
+
+.tabla-contenedor th {
+    background: #512da8;
+    color: white;
+}
+
+.tabla-contenedor tr:hover {
+    background: #f3e5f5;
+}
+
+.tabla-contenedor button {
+    padding: 6px 10px;
+    background: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.tabla-contenedor button:hover {
+    transform: scale(1.1);
+}
+
+.resaltar {
+    color: #ff4081;
+    font-weight: 900;
+    font-style: italic;
+}

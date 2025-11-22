@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario | Tu Tienda YA</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="Inventario.css">
+    <link rel="stylesheet" href="ModeDark.css">
+</head>
+
+<body>
+
+    <header class="superbar">
+        <div class="superbar-logo">
+            <h2 class="logo">Tu Tienda<span class="resaltar">YA</span></h2>
+        </div>
+
+        <div class="superbar-search">
+            <input type="text" id="buscarProducto" placeholder="Buscar producto...">
+        </div>
+
+        <button id="btnTema" class="tema-btn"></button>
+
+        <div class="btn-inicio-wrapper">
+            <a href="Inicio.html" class="btn-inicio">Inicio</a>
+        </div>
+
+    </header>
+
+<form id="form-producto" class="inventory-form form-grid"> 
+    <h2>Registrar Producto</h2>
+
+    
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" oninput="this.value = this.value.toUpperCase();" required>
+    </div>
+
+    <div class="form-group">
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" name="categoria" required>
+            <option value="aseo">Aseo</option>
+            <option value="granos">Granos</option>
+            <option value="lacteos">Lácteos</option>
+            <option value="bebidas">Bebidas</option>
+            <option value="snacks">Snacks</option>
+            <option value="verduras">Verduras</option>
+            <option value="frutas">Frutas</option>
+            <option value="carnes">Carnes</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="codigo">Código de Barras:</label>
+        <input type="text" id="codigo" required>
+    </div>
+
+    <div class="form-group">
+        <label for="precio-compra">Precio de Compra:</label>
+        <input type="number" id="precio-compra" step="0.01" required>
+    </div>
+
+    <div class="form-group">
+        <label for="margen">Margen de Ganancia (%):</label>
+        <input type="number" id="margen" step="0.01" min="0" max="100" required>
+    </div>
+
+    <div class="form-group">
+        <label for="precio-venta">Precio de Venta:</label>
+        <input type="number" id="precio-venta" step="0.01">
+    </div>
+
+    <div class="form-group">
+        <label for="cantidad">Cantidad en Stock:</label>
+        <input type="number" id="cantidad" min="0" required>
+    </div>
+
+    <button type="submit" class="btn-submit">Registrar Producto</button>
+
+</form>
+
+    <h2 class="titulo-inventario">Inventario de Productos</h2>
+    <table id="tabla-inventario">
+        <thead>
+            <tr>
+            <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Código</th>
+            <th>Precio Compra</th>
+            <th>Margen</th>
+            <th>Precio Venta</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+            </tr>
+        </thead>
+    <tbody>
+       
+    </tbody>
+    </table>
+    <section class="dashboard">
+
+        <h2 class="titulo-dashboard">Resumen General</h2>
+
+        <div class="dashboard-cards">
+
+            <div class="card-dashboard" id="card-total-productos">
+                <h3>Total Productos</h3>
+                <p class="valor-card">0</p>
+            </div>
+
+            <div class="card-dashboard" id="card-inventario-valor">
+                <h3>Valor en Inventario</h3>
+                <p class="valor-card">$0</p>
+            </div>
+
+            <div class="card-dashboard" id="card-bajo-stock">
+        <div class="titulo-card"> Productos Bajos</div>
+        <div class="valor-card" id="valor-bajo-stock">0</div>
+    </div>
+
+
+        </div>
+
+        <!-- Tabla rápida -->
+        <div id="productos-bajo-stock"></div>
+
+        <h3>Productos con Bajo Stock</h3>
+        <table id="tabla-bajos">
+        <thead>
+            <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se muestran los productos bajos -->
+        </tbody>
+        </table>
+
+
+    </section>
+
+
+<script src="Inventario.js"></script>
+<script src="ModeDark.js"></script>
+
+</body>
+</html>
